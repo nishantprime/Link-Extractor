@@ -25,6 +25,8 @@ def get_page_links(url):
             link = url + '/' + link
         if link.endswith('/'):
             link = link[:-1]
+        if '#' in link:
+            link = link.split('#')[0]
         links.append(link)
     links = list(set(links))
   
