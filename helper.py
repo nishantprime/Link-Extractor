@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import random
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
@@ -31,3 +32,16 @@ def get_page_links(url):
     links = list(set(links))
   
     return links
+
+def generate_target_url(url):
+    for retry in range(3):
+        try:
+            link = url
+            for i in range(3):
+                links = get_page_links(link)
+                link = random.choice(links)
+            return link
+        except Exception as e:
+            if retry != 2:
+                continue
+                
