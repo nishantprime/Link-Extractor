@@ -17,12 +17,12 @@ def get_page_links(url):
     raw = [link['href'] for link in soup.find_all('a', href = True)]
     links = []
     for link in raw:
+        if link.startswith('/wiki'):
+            link = url.split('/wiki')[0] + link
         if link.startswith('/'):
             link = url + link
         if not link.startswith('http'):
             link = url + '/' + link
-        if link.startswith('/wiki'):
-            link = url.split('/wiki')[0] + link
         if link.endswith('/'):
             link = link[:-1]
         links.append(link)
