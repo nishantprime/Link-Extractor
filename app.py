@@ -12,9 +12,9 @@ def home():
             url = request.form['URL']
             links = get_page_links(url)
             if not links:
-                return render_template('index.html', error = f'No Links Found')
+                return render_template('index.html', error = 'No Links Found')
             return render_template('index.html', links=links)
         except Exception as e:
-            return render_template('index.html', error = f'Error occured : {str(e)}')
+            return render_template('index.html', error = str(e))
 if __name__ == '__main__':
     app.run(debug=True)
