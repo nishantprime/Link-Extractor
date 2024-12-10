@@ -11,6 +11,8 @@ def home():
         try:
             url = request.form['URL']
             links = get_page_links(url)
+            if not links:
+                return render_template('index.html', error = f'No Links Found')
             return render_template('index.html', links=links)
         except Exception as e:
             return render_template('index.html', error = f'Error occured : {str(e)}')
