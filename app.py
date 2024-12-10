@@ -11,6 +11,8 @@ def home():
         try:
             url = request.form['URL']
             links = get_page_links(url)
+            if links == 0:
+                return render_template('index.html', error = 'Site not accessable')
             if not links:
                 return render_template('index.html', error = 'No Links Found')
             return render_template('index.html', links=links)
