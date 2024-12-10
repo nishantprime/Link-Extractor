@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Link Extractor</title>
+    <script>
+        function submitLink(url) {
+            document.getElementById("URL").value = url;
+            document.querySelector("form").submit();
+        }
+    </script>
 </head>
 <body>
     <h1>Link Extractor</h1>
@@ -18,7 +24,7 @@
         <h2>Extracted Links:</h2>
         <ul>
             {% for link in links %}
-                <li><a href="{{ link }}">{{ link }}</a></li>
+                <li><a href="{{ link }}">{{ link }}</a> <button onclick="submitLink('{{ link }}')">🔄</button></li>
             {% endfor %}
         </ul>
     {% endif %}
