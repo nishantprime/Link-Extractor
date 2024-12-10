@@ -10,7 +10,7 @@ headers = {
 def get_page_links(url):
     if url.endswith('/'):
         url = url[:-1]
-    response = requests.get(url, headers = headers)
+    response = requests.get(url, headers = headers, verify=False)
     if response.status_code != 200:
         return 0
     soup = BeautifulSoup(response.text, 'html.parser')
