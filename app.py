@@ -13,6 +13,6 @@ def home():
             links = get_page_links(url)
             return render_template('index.html', links=links)
         except Exception as e:
-            return render_template(index.html, error = f'Error occured : {str(e)}')
+            return render_template('index.html', error = f'Error occured : {str(e)}')
 if __name__ == '__main__':
     app.run(debug=True)
