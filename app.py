@@ -15,6 +15,7 @@ def home():
                 return render_template('index.html', error = 'Site not accessable')
             if not links:
                 return render_template('index.html', error = 'No Links Found')
+            links.insert(0,url)
             return render_template('index.html', links=links)
         except Exception as e:
             return render_template('index.html', error = str(e))
