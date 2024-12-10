@@ -18,7 +18,9 @@ def get_page_links(url):
     links = []
     for link in raw:
         if link.startswith('/'):
-            link = url+link
+            link = url + link
+        if not link.startswith('http'):
+            link = url + '/' + link
         if link.endswith('/'):
             link = link[:-1]
         links.append(link)
