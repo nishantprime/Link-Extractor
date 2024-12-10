@@ -18,5 +18,6 @@ def get_page_links(url):
     if link.startswith('/'):
       link = url+link
     links.append(link)
+  links = list(set(links))
   
   return links
