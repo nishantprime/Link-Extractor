@@ -18,9 +18,8 @@ def get_page_links(url):
   soup = BeautifulSoup(response.text, 'html.parser')
   links = []
   raw = soup.find_all('a', href = True)
-  if not raw[0]:
-      return []
   for link in raw:
+    link = link.get('href')
     if link.startswith('/'):
       link = url+link
     links.append(link)
