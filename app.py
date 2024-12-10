@@ -8,8 +8,11 @@ def home():
     if request.method == 'GET':
         return render_template('index.html')
     else:
-        url = request.form['URL']
-        links = get_page_links(url)
-        return render_template('index.html', links=links)
+        try:
+            url = request.form['URL']
+            links = get_page_links(url)
+            return render_template('index.html', links=links)
+        except Exception as e:
+            return render_template(index.html, error = f'Error occured : {str(e)}')
 if __name__ == '__main__':
-    app.run
+    app.run(debug=True)
