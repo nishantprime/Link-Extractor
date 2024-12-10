@@ -11,6 +11,8 @@ def get_page_links(url):
   if url.endswith('/'):
     url = url[:-1]
   response = requests.get(url, headers = headers)
+  if response.status_code != 200:
+      return 0
   soup = BeautifulSoup(response.text, 'html.parser')
   raw = [link['href'] for link in soup.find_all('a', href = True)]
   links = []
